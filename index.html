@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ca">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -218,10 +218,9 @@
     }
 
     .carousel-slide {
-      min-width: 100%;
+      flex: 0 0 100%;
       height: 100%;
       position: relative;
-      flex-shrink: 0;
     }
 
     .carousel-slide img {
@@ -886,7 +885,7 @@
     /* ==================== SCROLL TOP ==================== */
     .scroll-top {
       position: fixed;
-      bottom: 30px;
+      bottom: 86px;
       right: 30px;
       width: 44px;
       height: 44px;
@@ -939,11 +938,347 @@
       section { padding: 70px 0; }
     }
 
+    @media (max-width: 768px) {
+      .carousel-btn { display: none; }
+    }
+
     @media (max-width: 480px) {
       .portfolio-grid { grid-template-columns: 1fr; }
       .portfolio-item.tall { grid-row: span 1; }
       .hero-stats { gap: 24px; }
       .team-list { grid-template-columns: 1fr; }
+    }
+
+    /* ==================== LIGHTBOX ==================== */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .lightbox-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-content img {
+      max-width: 80vw;
+      max-height: 65vh;
+      object-fit: contain;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .lightbox-info {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(8px);
+      border-radius: 4px;
+      padding: 16px 24px;
+      margin-top: 16px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .lightbox-info h3 {
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .lightbox-info .lightbox-cat {
+      color: var(--lime);
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+    }
+
+    .lightbox-cta-text {
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .lightbox-btn {
+      padding: 10px 28px;
+      font-size: 0.88rem;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: var(--white);
+      font-size: 1.8rem;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: background 0.2s;
+      z-index: 3010;
+    }
+
+    .lightbox-close:hover { background: var(--lime); color: var(--dark); }
+
+    .lightbox-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: var(--white);
+      font-size: 1.4rem;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 3010;
+    }
+
+    .lightbox-nav:hover { background: var(--lime); color: var(--dark); }
+    .lightbox-nav.prev { left: 20px; }
+    .lightbox-nav.next { right: 20px; }
+
+    @media (max-width: 600px) {
+      .lightbox-nav { display: none; }
+      .lightbox-content img { max-width: 95vw; }
+    }
+
+    /* ==================== FAB ==================== */
+    .fab-wrapper {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-end;
+      gap: 10px;
+      z-index: 901;
+    }
+
+    .fab-main {
+      width: 44px;
+      height: 44px;
+      background: var(--dark-green);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .fab-main:hover { background: var(--lime); color: var(--dark); }
+    .fab-main.open { background: var(--lime); color: var(--dark); }
+
+    .fab-menu {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.25s ease;
+    }
+
+    .fab-menu.open {
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    .fab-item {
+      width: 44px;
+      height: 44px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      border: none;
+      letter-spacing: 0.3px;
+    }
+
+    .fab-item.fab-lang {
+      background: rgba(30,45,74,0.9);
+      color: var(--white);
+      border: 1px solid #444;
+      font-size: 0.75rem;
+    }
+
+    .fab-item.fab-lang:hover,
+    .fab-item.fab-lang.active {
+      background: var(--lime);
+      color: var(--dark);
+      border-color: var(--lime);
+    }
+
+    .fab-item.fab-wa { background: #25d366; color: #fff; }
+    .fab-item.fab-tg { background: #229ed9; color: #fff; }
+    .fab-item.fab-em { background: #ea4335; color: #fff; }
+
+    .fab-item.fab-wa:hover { background: #1da851; }
+    .fab-item.fab-tg:hover { background: #1a8ab5; }
+    .fab-item.fab-em:hover { background: #c5392d; }
+
+    .fab-lang-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    /* ==================== SERVICE MODAL ==================== */
+    .service-card { cursor: pointer; }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 40px 36px 36px;
+      width: 100%;
+      max-width: 480px;
+      position: relative;
+      transform: translateY(24px);
+      transition: transform 0.3s;
+    }
+
+    .modal-overlay.open .modal-box {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--gray);
+      line-height: 1;
+      padding: 4px 8px;
+    }
+
+    .modal-close:hover { color: var(--dark); }
+
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .modal-subtitle {
+      font-size: 0.88rem;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+
+    .modal-box .form-group { margin-bottom: 16px; }
+
+    .modal-box .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+
+    .modal-box .form-group input,
+    .modal-box .form-group select,
+    .modal-box .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      color: var(--dark);
+      background: var(--white);
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+
+    .modal-box .form-group input:focus,
+    .modal-box .form-group select:focus,
+    .modal-box .form-group textarea:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+
+    .modal-box .form-group textarea { resize: vertical; min-height: 80px; }
+
+    .modal-submit {
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .modal-success {
+      display: none;
+      text-align: center;
+      padding: 20px 0 8px;
+    }
+
+    .modal-success svg { margin-bottom: 12px; }
+
+    .modal-success p {
+      color: var(--dark);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 520px) {
+      .modal-box { padding: 32px 20px 24px; margin: 0 12px; }
     }
   </style>
 </head>
@@ -1077,7 +1412,7 @@
           <div class="team-item" data-i18n="team_5">Electricistas</div>
           <div class="team-item" data-i18n="team_6">Decoradores de interiores</div>
         </div>
-        <a href="#contact" class="btn" style="margin-top:32px;" data-i18n="about_cta">Contactar con nosotros</a>
+        <button onclick="openServiceModal(0)" class="btn" style="margin-top:32px;" data-i18n="about_cta">Contactar con nosotros</button>
       </div>
     </div>
   </div>
@@ -1092,7 +1427,7 @@
     </div>
     <div class="services-grid">
 
-      <div class="service-card">
+      <div class="service-card" onclick="openServiceModal(1)">
         <div class="service-img"><img src="images/service-home.jpg" alt="Ремонт жилья" /></div>
         <div class="service-body">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg></div>
@@ -1101,7 +1436,7 @@
         </div>
       </div>
 
-      <div class="service-card">
+      <div class="service-card" onclick="openServiceModal(2)">
         <div class="service-img"><img src="images/service-commercial.jpg" alt="Коммерческие помещения" /></div>
         <div class="service-body">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"/><path d="M3 9l2-5h14l2 5"/><path d="M9 9v12M15 9v12"/><rect x="9" y="14" width="6" height="6" rx="0.5"/></svg></div>
@@ -1110,7 +1445,7 @@
         </div>
       </div>
 
-      <div class="service-card">
+      <div class="service-card" onclick="openServiceModal(3)">
         <div class="service-img"><img src="images/service-kitchen.jpg" alt="Кухня" /></div>
         <div class="service-body">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3c0 2.5 4 2.5 4 5S6 10.5 6 13"/><path d="M6 13h12"/><path d="M6 17h12"/><path d="M5 21h14a1 1 0 0 0 1-1v-7H4v7a1 1 0 0 0 1 1z"/><path d="M14 3c0 2.5-4 2.5-4 5s4 2.5 4 5"/></svg></div>
@@ -1119,7 +1454,7 @@
         </div>
       </div>
 
-      <div class="service-card">
+      <div class="service-card" onclick="openServiceModal(4)">
         <div class="service-img"><img src="images/service-bathroom.jpg" alt="Ванная" /></div>
         <div class="service-body">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6V4a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1"/><path d="M4 10h16v4a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6v-4z"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="8" y1="20" x2="6" y2="23"/><line x1="16" y1="20" x2="18" y2="23"/></svg></div>
@@ -1128,7 +1463,7 @@
         </div>
       </div>
 
-      <div class="service-card">
+      <div class="service-card" onclick="openServiceModal(5)">
         <div class="service-img"><img src="images/service-office.jpg" alt="Офис" /></div>
         <div class="service-body">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/><line x1="2" y1="14" x2="22" y2="14"/></svg></div>
@@ -1137,7 +1472,7 @@
         </div>
       </div>
 
-      <div class="service-card">
+      <div class="service-card" onclick="openServiceModal(6)">
         <div class="service-img"><img src="images/service-facade.jpg" alt="Фасад" /></div>
         <div class="service-body">
           <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="21" x2="21" y2="21"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="5 10 5 21"/><polyline points="19 10 19 21"/><polyline points="9 10 9 21"/><polyline points="15 10 15 21"/><path d="M12 3L2 10h20L12 3z"/></svg></div>
@@ -1159,7 +1494,7 @@
     </div>
     <div class="portfolio-grid">
 
-      <div class="portfolio-item wide tall">
+      <div class="portfolio-item wide tall" onclick="openLightbox(0)">
         <img src="images/portfolio1.jpg" alt="Полный ремонт" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p1_title">Полный ремонт квартиры</h4>
@@ -1167,7 +1502,7 @@
         </div>
       </div>
 
-      <div class="portfolio-item">
+      <div class="portfolio-item" onclick="openLightbox(1)">
         <img src="images/portfolio2.jpg" alt="Кухня" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p2_title">Дизайн кухни</h4>
@@ -1175,15 +1510,15 @@
         </div>
       </div>
 
-      <div class="portfolio-item">
-        <img src="images/portfolio3.jpg" alt="Ванная" />
+      <div class="portfolio-item" onclick="openLightbox(2)">
+        <img src="images/portfolio3.jpg?v=2" alt="Ванная" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p3_title">Ремонт ванной</h4>
           <p data-i18n="p3_cat">Ванная · Грасиа</p>
         </div>
       </div>
 
-      <div class="portfolio-item">
+      <div class="portfolio-item" onclick="openLightbox(3)">
         <img src="images/portfolio4.jpg" alt="Коммерческое" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p4_title">Коммерческое помещение</h4>
@@ -1191,7 +1526,7 @@
         </div>
       </div>
 
-      <div class="portfolio-item tall">
+      <div class="portfolio-item tall" onclick="openLightbox(4)">
         <img src="images/portfolio5.jpg" alt="Фасад" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p5_title">Реставрация фасада</h4>
@@ -1199,7 +1534,7 @@
         </div>
       </div>
 
-      <div class="portfolio-item">
+      <div class="portfolio-item" onclick="openLightbox(5)">
         <img src="images/portfolio6.jpg" alt="Офис" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p6_title">Ремонт офиса</h4>
@@ -1207,7 +1542,7 @@
         </div>
       </div>
 
-      <div class="portfolio-item">
+      <div class="portfolio-item" onclick="openLightbox(6)">
         <img src="images/portfolio7.jpg" alt="Квартира" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p7_title">Обновлённая квартира</h4>
@@ -1215,7 +1550,7 @@
         </div>
       </div>
 
-      <div class="portfolio-item">
+      <div class="portfolio-item" onclick="openLightbox(7)">
         <img src="images/portfolio8.jpg" alt="Полный ремонт" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p8_title">Полный ремонт</h4>
@@ -1341,7 +1676,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2024 Тест Компания. <span data-i18n="footer_rights">Todos los derechos reservados.</span></span>
+      <span>© 2026 Тест Компания. <span data-i18n="footer_rights">Todos los derechos reservados.</span></span>
       <span><a href="cookie-policy.html" data-i18n="footer_cookies">Политика cookies</a> · <a href="privacy-policy.html" data-i18n="footer_privacy">Конфиденциальность</a></span>
     </div>
   </div>
@@ -1361,6 +1696,80 @@
 
 <!-- Scroll to top -->
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
+
+<!-- ==================== FAB ==================== -->
+<div class="fab-wrapper">
+  <button class="fab-main" id="fabMain" onclick="toggleFab()" aria-label="Menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+  <div class="fab-menu" id="fabMenu">
+    <a class="fab-item fab-wa" href="https://wa.me/34000000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <a class="fab-item fab-tg" href="https://t.me/username" target="_blank" rel="noopener" aria-label="Telegram">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </a>
+    <a class="fab-item fab-em" href="mailto:info@test.com" aria-label="Email">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ==================== LIGHTBOX ==================== -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">&times;</button>
+  <button class="lightbox-nav prev" onclick="lightboxNav(-1)" aria-label="Anterior">&#8592;</button>
+  <button class="lightbox-nav next" onclick="lightboxNav(1)" aria-label="Siguiente">&#8594;</button>
+  <div class="lightbox-content">
+    <img id="lightboxImg" src="" alt="" />
+    <div class="lightbox-info">
+      <h3 id="lightboxTitle"></h3>
+      <p class="lightbox-cat" id="lightboxCat"></p>
+      <p class="lightbox-cta-text" data-i18n="gallery_cta">Voleu el mateix? Deixeu una sol·licitud</p>
+      <button class="btn lightbox-btn" onclick="closeLightbox(); openServiceModal(0);" data-i18n="gallery_btn">Deixar una sol·licitud</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SERVICE MODAL ==================== -->
+<div class="modal-overlay" id="serviceModal" onclick="closeServiceModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeServiceModal()" aria-label="Закрыть">×</button>
+    <div class="modal-title" data-i18n="modal_title">Запросить консультацию</div>
+    <div class="modal-subtitle" data-i18n="modal_subtitle">Оставьте контакты — мы свяжемся с вами в течение дня</div>
+    <form id="modalForm" onsubmit="handleModalSubmit(event)">
+      <div class="form-group">
+        <label data-i18n="form_name">Имя</label>
+        <input type="text" name="name" required data-i18n-placeholder="modal_name_ph" placeholder="El vostre nom" />
+      </div>
+      <div class="form-group">
+        <label data-i18n="form_phone">Телефон</label>
+        <input type="tel" name="phone" placeholder="+34 600 000 000" />
+      </div>
+      <div class="form-group">
+        <label data-i18n="form_service">Тип услуги</label>
+        <select name="service" id="modalServiceSelect">
+          <option value="" data-i18n="form_select">— Выбрать —</option>
+          <option data-i18n="s1_title">Полный ремонт жилья</option>
+          <option data-i18n="s2_title">Ремонт коммерческих помещений</option>
+          <option data-i18n="s3_title">Дизайн и ремонт кухонь</option>
+          <option data-i18n="s4_title">Ремонт ванных комнат</option>
+          <option data-i18n="s5_title">Ремонт офисов</option>
+          <option data-i18n="s6_title">Реставрация фасадов</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form_message">Сообщение</label>
+        <textarea name="message" placeholder="Опишите ваш проект..." data-i18n-placeholder="form_message_ph"></textarea>
+      </div>
+      <button type="submit" class="btn modal-submit" data-i18n="form_submit">Отправить заявку</button>
+    </form>
+    <div class="modal-success" id="modalSuccess">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+      <p data-i18n="form_sent">Сообщение отправлено! Мы свяжемся с вами в ближайшее время.</p>
+    </div>
+  </div>
+</div>
 
 <!-- ==================== JAVASCRIPT ==================== -->
 <script>
@@ -1404,6 +1813,9 @@
       form_service:'Тип ремонта', form_select:'— Выбрать —',
       form_message:'Сообщение', form_message_ph:'Опишите ваш проект...',
       form_submit:'Отправить заявку', form_sent:'Сообщение отправлено! Мы свяжемся с вами в ближайшее время.',
+      modal_title:'Запросить консультацию', modal_subtitle:'Оставьте контакты — мы свяжемся с вами в течение дня',
+      modal_name_ph:'Ваше имя',
+      gallery_cta:'Хотите так же? Оставьте заявку', gallery_btn:'Оставить заявку',
       footer_desc:'Профессионалы в области ремонта в Барселоне с более чем 10-летним опытом. Качество гарантировано в каждом проекте.',
       footer_nav:'Навигация', footer_services:'Услуги', footer_contact:'Контакт',
       footer_rights:'Все права защищены.',
@@ -1449,6 +1861,9 @@
       form_service:'Tipus de reforma', form_select:'— Seleccionar —',
       form_message:'Missatge', form_message_ph:'Descriviu el vostre projecte...',
       form_submit:'Enviar sol·licitud', form_sent:'Missatge enviat! Ens posarem en contacte amb vosaltres aviat.',
+      modal_title:'Sol·licitar consulta', modal_subtitle:'Deixeu les vostres dades — us contactarem en el dia',
+      modal_name_ph:'El vostre nom',
+      gallery_cta:'Voleu el mateix? Deixeu una sol·licitud', gallery_btn:'Deixar una sol·licitud',
       footer_desc:'Professionals de la reforma a Barcelona amb més de 10 anys d\'experiència. Qualitat garantida en cada projecte.',
       footer_nav:'Navegació', footer_services:'Serveis', footer_contact:'Contacte',
       footer_rights:'Tots els drets reservats.',
@@ -1458,7 +1873,7 @@
     }
   };
 
-  let currentLang = 'ru';
+  let currentLang = 'ca';
 
   function setLang(lang) {
     currentLang = lang;
@@ -1480,6 +1895,11 @@
     document.querySelectorAll('.lang-btn').forEach(b => {
       b.classList.toggle('active', b.textContent.trim() === lang.toUpperCase());
     });
+    // Update FAB lang buttons
+    const fabRu = document.getElementById('fabRu');
+    const fabCa = document.getElementById('fabCa');
+    if (fabRu) fabRu.classList.toggle('active', lang === 'ru');
+    if (fabCa) fabCa.classList.toggle('active', lang === 'ca');
     document.documentElement.lang = lang;
   }
 
@@ -1507,7 +1927,7 @@
   resetCarouselTimer();
 
   /* ---- Init language ---- */
-  setLang('ru');
+  setLang('ca');
 
   /* ---- Hamburger ---- */
   document.getElementById('hamburger').addEventListener('click', () => {
@@ -1547,6 +1967,48 @@
     alert('Usamos cookies técnicas para el correcto funcionamiento del sitio web y cookies estadísticas para mejorar nuestros servicios. No utilizamos cookies de terceros con fines publicitarios.');
   }
 
+  /* ---- Service modal ---- */
+  function openServiceModal(serviceIndex) {
+    const modal = document.getElementById('serviceModal');
+    const select = document.getElementById('modalServiceSelect');
+    const form = document.getElementById('modalForm');
+    const success = document.getElementById('modalSuccess');
+
+    // Reset form state
+    form.style.display = '';
+    success.style.display = 'none';
+    form.reset();
+
+    // Pre-select service
+    select.selectedIndex = serviceIndex;
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeServiceModal(e) {
+    if (e && e.target !== document.getElementById('serviceModal')) return;
+    document.getElementById('serviceModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeServiceModal();
+  });
+
+  function handleModalSubmit(e) {
+    e.preventDefault();
+    const t = translations[currentLang];
+    document.getElementById('modalForm').style.display = 'none';
+    const s = document.getElementById('modalSuccess');
+    s.style.display = 'block';
+    s.querySelector('p').innerHTML = t.form_sent;
+    setTimeout(() => {
+      document.getElementById('serviceModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }, 2500);
+  }
+
   /* ---- Contact form ---- */
   function handleSubmit(e) {
     e.preventDefault();
@@ -1556,6 +2018,76 @@
     s.style.display = 'block';
     s.querySelector('p').innerHTML = t.form_sent;
   }
+
+  /* ---- Lightbox ---- */
+  const portfolioItems = [];
+  document.querySelectorAll('.portfolio-item').forEach((item, i) => {
+    const img = item.querySelector('img');
+    const h4 = item.querySelector('.portfolio-overlay h4');
+    const p = item.querySelector('.portfolio-overlay p');
+    portfolioItems.push({ src: img.src, alt: img.alt, titleEl: h4, catEl: p });
+  });
+
+  let lightboxIndex = 0;
+
+  function openLightbox(index) {
+    lightboxIndex = index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function updateLightbox() {
+    const item = portfolioItems[lightboxIndex];
+    document.getElementById('lightboxImg').src = item.src;
+    document.getElementById('lightboxImg').alt = item.alt;
+    document.getElementById('lightboxTitle').textContent = item.titleEl ? item.titleEl.textContent : '';
+    document.getElementById('lightboxCat').textContent = item.catEl ? item.catEl.textContent : '';
+  }
+
+  function closeLightbox(e) {
+    if (e && e.target !== document.getElementById('lightbox')) return;
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function lightboxNav(dir) {
+    lightboxIndex = (lightboxIndex + dir + portfolioItems.length) % portfolioItems.length;
+    updateLightbox();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+    if (e.key === 'ArrowRight') lightboxNav(1);
+    if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('open'), document.body.style.overflow = '';
+  });
+
+  /* ---- FAB ---- */
+  let fabOpen = false;
+
+  const chatIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
+  const closeIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+
+  function toggleFab() {
+    fabOpen = !fabOpen;
+    document.getElementById('fabMenu').classList.toggle('open', fabOpen);
+    const btn = document.getElementById('fabMain');
+    btn.classList.toggle('open', fabOpen);
+    btn.innerHTML = fabOpen ? closeIcon : chatIcon;
+  }
+
+  function closeFab() {
+    fabOpen = false;
+    document.getElementById('fabMenu').classList.remove('open');
+    const btn = document.getElementById('fabMain');
+    btn.classList.remove('open');
+    btn.innerHTML = chatIcon;
+  }
+
+  document.addEventListener('click', (e) => {
+    if (fabOpen && !e.target.closest('.fab-wrapper')) closeFab();
+  });
 
   /* ---- Smooth active nav highlighting ---- */
   const sections = document.querySelectorAll('section[id]');
