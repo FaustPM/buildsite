@@ -1,0 +1,60 @@
+/* ==================== RESET & BASE ==================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark-green: #1e2d4a;
+  --lime: #3b82f6;
+  --gray: #a9a9a9;
+  --dark: #0f172a;
+  --light: #f0f4f8;
+  --white: #ffffff;
+  --text: #1e293b;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { display: block; width: 100%; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark-green);
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  color: var(--gray);
+  font-size: 1rem;
+  margin-bottom: 50px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--lime);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background 0.3s, transform 0.2s;
+  border-radius: 2px;
+}
+
+.btn:hover { background: #2563eb; transform: translateY(-1px); }
