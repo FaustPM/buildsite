@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Тест Компания</title>
+  <title>TALEX Systems SL</title>
   <style>
     /* ==================== RESET & BASE ==================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -108,7 +108,7 @@
 
     .logo-text {
       color: var(--white);
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       font-weight: 700;
       line-height: 1.2;
     }
@@ -783,6 +783,26 @@
       color: #777;
     }
 
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #222;
+      color: #777;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .footer-social a:hover { background: var(--lime); color: #111; }
+
     .footer-col h4 {
       color: var(--white);
       font-size: 0.9rem;
@@ -1288,8 +1308,7 @@
 <header>
   <nav>
     <a href="#home" class="logo">
-      <div class="logo-mark">ТК</div>
-      <div class="logo-text">Тест <span>Компания</span></div>
+<div class="logo-text">TALEX <span>Systems SL</span></div>
     </a>
 
     <ul class="nav-links">
@@ -1301,8 +1320,8 @@
     </ul>
 
     <div class="nav-right">
-      <a href="tel:+34000000000" class="nav-phone">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5 19.79 19.79 0 0 1 1.61 2.84 2 2 0 0 1 3.6.67h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.55 5.55l1.27-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+34 000 000 000
+      <a href="tel:+34621073436" class="nav-phone">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5 19.79 19.79 0 0 1 1.61 2.84 2 2 0 0 1 3.6.67h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.55 5.55l1.27-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+34 621 073 436
       </a>
       <div class="lang-switcher">
         <button class="lang-btn active" onclick="setLang('ru')">RU</button>
@@ -1495,7 +1514,7 @@
     <div class="portfolio-grid">
 
       <div class="portfolio-item wide tall" onclick="openLightbox(0)">
-        <img src="images/portfolio1.jpg" alt="Полный ремонт" />
+        <img src="images/p1_1.jpg" alt="Полный ремонт" loading="lazy" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p1_title">Полный ремонт квартиры</h4>
           <p data-i18n="p1_cat">Жильё · Барселона</p>
@@ -1503,7 +1522,7 @@
       </div>
 
       <div class="portfolio-item" onclick="openLightbox(1)">
-        <img src="images/portfolio2.jpg" alt="Кухня" />
+        <img src="images/p2_1.jpg" alt="Кухня" loading="lazy" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p2_title">Дизайн кухни</h4>
           <p data-i18n="p2_cat">Кухня · Эйшампле</p>
@@ -1511,7 +1530,7 @@
       </div>
 
       <div class="portfolio-item" onclick="openLightbox(2)">
-        <img src="images/portfolio3.jpg?v=2" alt="Ванная" />
+        <img src="images/p3_1.jpg" alt="Ванная" loading="lazy" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p3_title">Ремонт ванной</h4>
           <p data-i18n="p3_cat">Ванная · Грасиа</p>
@@ -1519,7 +1538,7 @@
       </div>
 
       <div class="portfolio-item" onclick="openLightbox(3)">
-        <img src="images/portfolio4.jpg" alt="Коммерческое" />
+        <img src="images/p4_1.jpg" alt="Коммерческое" loading="lazy" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p4_title">Коммерческое помещение</h4>
           <p data-i18n="p4_cat">Коммерческое · Сарриа</p>
@@ -1527,7 +1546,7 @@
       </div>
 
       <div class="portfolio-item tall" onclick="openLightbox(4)">
-        <img src="images/portfolio5.jpg" alt="Фасад" />
+        <img src="images/p5_1.jpg" alt="Фасад" loading="lazy" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p5_title">Реставрация фасада</h4>
           <p data-i18n="p5_cat">Фасад · Побленоу</p>
@@ -1535,7 +1554,7 @@
       </div>
 
       <div class="portfolio-item" onclick="openLightbox(5)">
-        <img src="images/portfolio6.jpg" alt="Офис" />
+        <img src="images/p6_1.jpg" alt="Офис" loading="lazy" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p6_title">Ремонт офиса</h4>
           <p data-i18n="p6_cat">Офис · Лес Кортс</p>
@@ -1543,7 +1562,7 @@
       </div>
 
       <div class="portfolio-item" onclick="openLightbox(6)">
-        <img src="images/portfolio7.jpg" alt="Квартира" />
+        <img src="images/p7_1.jpg" alt="Квартира" loading="lazy" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p7_title">Обновлённая квартира</h4>
           <p data-i18n="p7_cat">Жильё · Сант Жерваси</p>
@@ -1551,7 +1570,7 @@
       </div>
 
       <div class="portfolio-item" onclick="openLightbox(7)">
-        <img src="images/portfolio8.jpg" alt="Полный ремонт" />
+        <img src="images/p8_1.jpg" alt="Ремонт в процессе" loading="lazy" />
         <div class="portfolio-overlay">
           <h4 data-i18n="p8_title">Полный ремонт</h4>
           <p data-i18n="p8_cat">Жильё · Орта</p>
@@ -1576,14 +1595,14 @@
             <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5 19.79 19.79 0 0 1 1.61 2.84 2 2 0 0 1 3.6.67h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 5.55 5.55l1.27-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
             <div class="contact-item-text">
               <span class="contact-item-label" data-i18n="ci_phone_label">Teléfono</span>
-              <a class="contact-item-value" href="tel:+34000000000">+34 000 000 000</a>
+              <a class="contact-item-value" href="tel:+34621073436">+34 621 073 436</a>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div>
             <div class="contact-item-text">
               <span class="contact-item-label" data-i18n="ci_email_label">Email</span>
-              <a class="contact-item-value" href="mailto:info@test.com">info@test.com</a>
+              <a class="contact-item-value" href="mailto:info@talexsystems.es">info@talexsystems.es</a>
             </div>
           </div>
         </div>
@@ -1639,10 +1658,17 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo">
-          <div class="logo-mark">ТК</div>
-          <div class="logo-text">Тест <span>Компания</span></div>
+        <div class="logo-text">TALEX <span>Systems SL</span></div>
         </div>
         <p data-i18n="footer_desc">Profesionales de la reforma en Barcelona con más de 10 años de experiencia. Calidad garantizada en cada proyecto.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/talexsystems" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/talexsystems" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
       </div>
 
       <div class="footer-col">
@@ -1670,13 +1696,13 @@
       <div class="footer-col">
         <h4 data-i18n="footer_contact">Contacto</h4>
         <ul>
-          <li><a href="tel:+34000000000">+34 000 000 000</a></li>
-          <li><a href="mailto:info@test.com">info@test.com</a></li>
+          <li><a href="tel:+34621073436">+34 621 073 436</a></li>
+          <li><a href="mailto:info@talexsystems.es">info@talexsystems.es</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Тест Компания. <span data-i18n="footer_rights">Todos los derechos reservados.</span></span>
+      <span>© 2026 TALEX Systems SL. <span data-i18n="footer_rights">Todos los derechos reservados.</span></span>
       <span><a href="cookie-policy.html" data-i18n="footer_cookies">Политика cookies</a> · <a href="privacy-policy.html" data-i18n="footer_privacy">Конфиденциальность</a></span>
     </div>
   </div>
@@ -1699,17 +1725,17 @@
 
 <!-- ==================== FAB ==================== -->
 <div class="fab-wrapper">
-  <button class="fab-main" id="fabMain" onclick="toggleFab()" aria-label="Menu">
+  <button class="fab-main" id="fabMain" onclick="toggleFab(event)" aria-label="Menu">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
   </button>
   <div class="fab-menu" id="fabMenu">
-    <a class="fab-item fab-wa" href="https://wa.me/34000000000" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <a class="fab-item fab-wa" href="https://wa.me/+34711543769" target="_blank" rel="noopener" aria-label="WhatsApp">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
     <a class="fab-item fab-tg" href="https://t.me/username" target="_blank" rel="noopener" aria-label="Telegram">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
     </a>
-    <a class="fab-item fab-em" href="mailto:info@test.com" aria-label="Email">
+    <a class="fab-item fab-em" href="mailto:info@talexsystems.es" aria-label="Email">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
     </a>
   </div>
@@ -1720,6 +1746,7 @@
   <button class="lightbox-close" onclick="closeLightbox()" aria-label="Cerrar">&times;</button>
   <button class="lightbox-nav prev" onclick="lightboxNav(-1)" aria-label="Anterior">&#8592;</button>
   <button class="lightbox-nav next" onclick="lightboxNav(1)" aria-label="Siguiente">&#8594;</button>
+  <span id="lightboxCounter" style="position:absolute;top:20px;left:50%;transform:translateX(-50%);color:#fff;font-size:0.85rem;background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:20px;z-index:2;"></span>
   <div class="lightbox-content">
     <img id="lightboxImg" src="" alt="" />
     <div class="lightbox-info">
@@ -2020,29 +2047,42 @@
   }
 
   /* ---- Lightbox ---- */
-  const portfolioItems = [];
+  const galleries = [
+    { images: ['images/p1_1.jpg','images/p1_2.jpg','images/p1_3.jpg'] },
+    { images: ['images/p2_1.jpg','images/p2_2.jpg','images/p2_3.jpg'] },
+    { images: ['images/p3_1.jpg','images/p3_2.jpg','images/p3_3.jpg'] },
+    { images: ['images/p4_1.jpg','images/p4_2.jpg','images/p4_3.jpg'] },
+    { images: ['images/p5_1.jpg','images/p5_2.jpg','images/p5_3.jpg'] },
+    { images: ['images/p6_1.jpg','images/p6_2.jpg','images/p6_3.jpg'] },
+    { images: ['images/p7_1.jpg','images/p7_2.jpg','images/p7_3.jpg'] },
+    { images: ['images/p8_1.jpg','images/p8_2.jpg','images/p8_3.jpg'] },
+  ];
+
+  // Attach title/cat references from DOM after load
   document.querySelectorAll('.portfolio-item').forEach((item, i) => {
-    const img = item.querySelector('img');
-    const h4 = item.querySelector('.portfolio-overlay h4');
-    const p = item.querySelector('.portfolio-overlay p');
-    portfolioItems.push({ src: img.src, alt: img.alt, titleEl: h4, catEl: p });
+    galleries[i].titleEl = item.querySelector('.portfolio-overlay h4');
+    galleries[i].catEl   = item.querySelector('.portfolio-overlay p');
   });
 
-  let lightboxIndex = 0;
+  let currentGallery = 0;
+  let currentImageIndex = 0;
 
-  function openLightbox(index) {
-    lightboxIndex = index;
+  function openLightbox(galleryIndex) {
+    currentGallery = galleryIndex;
+    currentImageIndex = 0;
     updateLightbox();
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function updateLightbox() {
-    const item = portfolioItems[lightboxIndex];
-    document.getElementById('lightboxImg').src = item.src;
-    document.getElementById('lightboxImg').alt = item.alt;
-    document.getElementById('lightboxTitle').textContent = item.titleEl ? item.titleEl.textContent : '';
-    document.getElementById('lightboxCat').textContent = item.catEl ? item.catEl.textContent : '';
+    const g = galleries[currentGallery];
+    const src = g.images[currentImageIndex];
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxImg').alt = g.titleEl ? g.titleEl.textContent : '';
+    document.getElementById('lightboxTitle').textContent = g.titleEl ? g.titleEl.textContent : '';
+    document.getElementById('lightboxCat').textContent = g.catEl ? g.catEl.textContent : '';
+    document.getElementById('lightboxCounter').textContent = (currentImageIndex + 1) + ' / ' + g.images.length;
   }
 
   function closeLightbox(e) {
@@ -2052,7 +2092,8 @@
   }
 
   function lightboxNav(dir) {
-    lightboxIndex = (lightboxIndex + dir + portfolioItems.length) % portfolioItems.length;
+    const g = galleries[currentGallery];
+    currentImageIndex = (currentImageIndex + dir + g.images.length) % g.images.length;
     updateLightbox();
   }
 
@@ -2069,7 +2110,8 @@
   const chatIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
   const closeIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
 
-  function toggleFab() {
+  function toggleFab(e) {
+    e.stopPropagation();
     fabOpen = !fabOpen;
     document.getElementById('fabMenu').classList.toggle('open', fabOpen);
     const btn = document.getElementById('fabMain');
