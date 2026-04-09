@@ -47,6 +47,54 @@ const translations = {
     cookie_text:'Мы используем cookies для улучшения вашего опыта.', cookie_more:'Подробнее',
     cookie_decline:'Отклонить', cookie_accept:'Принять'
   },
+  es: {
+    nav_home:'Inicio', nav_about:'Nosotros', nav_services:'Servicios', nav_works:'Trabajos', nav_contact:'Contacto',
+    hero_badge:'+10 Años de Experiencia',
+    hero_title:'Reformas <span>profesionales</span> en Barcelona',
+    hero_desc:'Somos un grupo de profesionales responsables, altamente capacitados y habilitados para cualquier tipo de reforma.',
+    hero_cta:'Solicitar presupuesto', hero_works:'Ver trabajos',
+    stat_years:'Años de exp.', stat_projects:'Proyectos', stat_quality:'Calidad',
+    about_label:'SOBRE NOSOTROS',
+    about_title:'Expertos en reformas con más de 10 años de experiencia',
+    about_p1:'Somos un equipo profesional y altamente cualificado, especializado en todo tipo de reformas tanto para viviendas residenciales como para locales comerciales en Barcelona y su área metropolitana.',
+    about_p2:'Nuestro enfoque se basa en la calidad, el respeto por los plazos y la total satisfacción del cliente. Cada proyecto se gestiona de forma personalizada, adaptándonos a las necesidades y el presupuesto de cada cliente.',
+    team_1:'Arquitectos', team_2:'Albañiles certificados', team_3:'Pintores profesionales',
+    team_4:'Expertos en fachadas', team_5:'Electricistas', team_6:'Decoradores de interiores',
+    about_cta:'Contactar con nosotros',
+    services_label:'LO QUE OFRECEMOS', services_title:'Nuestros servicios',
+    s1_title:'Reforma integral de viviendas', s1_desc:'Reformas completas de pisos, casas, chalets y dúplex. Gestionamos todo el proceso desde el diseño hasta la entrega de llaves.',
+    s2_title:'Reforma de locales comerciales', s2_desc:'Tiendas, oficinas, restaurantes, hoteles y clínicas. Adaptamos cualquier espacio comercial a tus necesidades.',
+    s3_title:'Diseño y reforma de cocinas', s3_desc:'Creamos cocinas a medida adaptadas a tus necesidades y estilo de vida, con materiales de primera calidad.',
+    s4_title:'Reforma de baños', s4_desc:'Renovamos tu baño con materiales de calidad y presupuesto fijo. Sin sorpresas al final de la obra.',
+    s5_title:'Reforma de oficinas', s5_desc:'Eliminación de tabiques, instalación de falsos techos, obras eléctricas y todo lo necesario para tu espacio de trabajo ideal.',
+    s6_title:'Restauración de patios', s6_desc:'Reparaciones estructurales, limpieza y rehabilitación de patios interiores y fachadas de edificios.',
+    works_label:'NUESTROS PROYECTOS', works_title:'Galería de trabajos',
+    p1_title:'Reforma integral de piso', p1_cat:'Vivienda · Barcelona',
+    p2_title:'Diseño de cocina', p2_cat:'Cocina · Eixample',
+    p3_title:'Reforma de baño', p3_cat:'Baño · Gracia',
+    p4_title:'Local comercial', p4_cat:'Comercial · Sarrià',
+    p5_title:'Restauración de fachada', p5_cat:'Fachada · Poblenou',
+    p6_title:'Reforma de oficina', p6_cat:'Oficina · Les Corts',
+    p7_title:'Piso modernizado', p7_cat:'Vivienda · Sant Gervasi',
+    p8_title:'Reforma completa', p8_cat:'Vivienda · Horta',
+    contact_label:'PONTE EN CONTACTO', contact_title:'¿Tienes un proyecto en mente?',
+    contact_desc:'Solicita tu presupuesto gratuito sin compromiso. Nuestro equipo estudiará tu proyecto y te responderemos en menos de 24 horas.',
+    ci_phone_label:'Teléfono', ci_email_label:'Email',
+    form_title:'Solicitar presupuesto gratuito',
+    form_name:'Nombre', form_phone:'Teléfono', form_email:'Correo electrónico',
+    form_service:'Tipo de reforma', form_select:'— Seleccionar —',
+    form_message:'Mensaje', form_message_ph:'Describe tu proyecto...',
+    form_submit:'Enviar solicitud', form_sent:'¡Mensaje enviado! Nos pondremos en contacto contigo pronto.',
+    modal_title:'Solicitar consulta', modal_subtitle:'Déjanos tus datos — te contactaremos durante el día',
+    modal_name_ph:'Tu nombre',
+    gallery_cta:'¿Quieres lo mismo? Deja una solicitud', gallery_btn:'Dejar una solicitud',
+    footer_desc:'Profesionales de la reforma en Barcelona con más de 10 años de experiencia. Calidad garantizada en cada proyecto.',
+    footer_nav:'Navegación', footer_services:'Servicios', footer_contact:'Contacto',
+    footer_rights:'Todos los derechos reservados.',
+    footer_cookies:'Política de cookies', footer_privacy:'Privacidad',
+    cookie_text:'Usamos cookies para mejorar tu experiencia.', cookie_more:'Más información',
+    cookie_decline:'Rechazar', cookie_accept:'Aceptar'
+  },
   ca: {
     nav_home:'Inici', nav_about:'Nosaltres', nav_services:'Serveis', nav_works:'Treballs', nav_contact:'Contacte',
     hero_badge:'+10 Anys d\'Experiència',
@@ -121,7 +169,9 @@ function setLang(lang) {
   });
   const fabRu = document.getElementById('fabRu');
   const fabCa = document.getElementById('fabCa');
+  const fabEs = document.getElementById('fabEs');
   if (fabRu) fabRu.classList.toggle('active', lang === 'ru');
   if (fabCa) fabCa.classList.toggle('active', lang === 'ca');
+  if (fabEs) fabEs.classList.toggle('active', lang === 'es');
   document.documentElement.lang = lang;
 }
