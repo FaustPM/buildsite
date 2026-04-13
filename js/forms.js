@@ -1,4 +1,4 @@
-const BOT_URL = 'http://localhost:8081/submit';
+const BOT_URL = '/submit';
 
 function handleModalSubmit(e) {
   e.preventDefault();
